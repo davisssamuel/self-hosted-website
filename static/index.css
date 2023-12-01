@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+
+:root {
+  --color-background: #111111;
+  --color-primary: #ffffff;
+  --color-secondary: #add8e6;
+  --color-highlight: #add8e6;
+  --color-hover: #d4eaf2;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--color-background);
+  color: var(--color-primary);
+
+  font-family: "JetBrains Mono", monospace;
+  font-size: 90%;
+}
+
+#classWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border: 0.1rem solid var(--color-primary);
+  /* border-radius: 1rem; */
+}
+
+h1,
+h2,
+h3,
+p,
+a {
+  margin: 0.25rem 0 0.25rem 0;
+}
+
+h1 {
+	font-weight: 400;
+  font-size: 100%;
+}
+
+a {
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-hover);
+  /* border: 0.1rem solid var(--color-primary); */
+  /* border-radius: 0.5rem; */
+}

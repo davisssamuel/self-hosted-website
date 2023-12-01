@@ -24,10 +24,11 @@ body {
   color: var(--color-primary);
 
   font-family: "JetBrains Mono", monospace;
-  font-size: 90%;
+  font-size: 80%;
 }
 
 #container {
+  display: flex;
   flex-direction: column;
   padding: 1rem;
   border: 0.1rem solid var(--color-primary);

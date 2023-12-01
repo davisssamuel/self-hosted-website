@@ -145,13 +145,13 @@ cloudflared service install
 Start the service:
 
 ```
-systemctl start cloudflared
+sudo systemctl start cloudflared
 ```
 
 Confirm the service is running:
 
 ```
-systemctl status cloudflared
+sudo systemctl status cloudflared
 ```
 
 If the the `config.yml` file in `~/.cloudflared/` is not identical to the one in `/etc/cloudflared/`, connecting to the server with `ssh` will throw:

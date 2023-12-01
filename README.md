@@ -1,8 +1,8 @@
 # Install the Ubuntu Server
 
-Download [Ubuntu Server](https://ubuntu.com/download/server) and flash the `.iso` file to a USB flash drive using [Balena Etcher](https://etcher.balena.io/)
+Download [Ubuntu Server](https://ubuntu.com/download/server) and flash the `.iso` file to a USB drive using [Balena Etcher](https://etcher.balena.io/)
 
-With the flash drive on the system, go into the BIOS and changed the boot order to use the USB flash drive first.
+With the USB drive on the system, go into the BIOS and changed the boot order to use the USB drive first.
 <!-- I had to hold F2 on restart to enter into the BIOS on my system. -->
 
 Using the installation TUI, choose the default options and install the Ubuntu Server onto the system.

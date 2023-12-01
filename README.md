@@ -62,7 +62,7 @@ To                         Action      From
 
 # Setup the Cloudflare Tunnel
 
-Follow the instructions for [creating a locally managed tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-local-tunnel/). After you have authenticated `cloudflared` via the browser popup (step 2), begin creating the tunnel.
+Follow the instructions for [adding a site to Cloudflare](https://developers.cloudflare.com/fundamentals/setup/account-setup/add-site/). Then, follow the instructions for [creating a locally managed tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-local-tunnel/) and stop after you have authenticated `cloudflared` via the browser popup (step 2).
 
 NOTE: be sure to follow the commands for **Linux** when downloading and installing `cloudflared`.
 
@@ -125,7 +125,7 @@ Run the tunnel:
 cloudflared tunnel run <UUID or NAME>
 ```
 
-# Run `cloudflared` as a service
+## Run `cloudflared` as a service
 
 In order to make the ensure the server always connects to the Cloudflare tunnel even on system reboot, `cloudflared` needs to be as a service. 
 

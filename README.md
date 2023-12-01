@@ -7,7 +7,6 @@ With the flash drive in the desktop, go into the BIOS and changed the boot order
 
 Using the installation TUI, choose the default options and install the Ubuntu Server onto the desktop.
 
-___
 # Setup `ssh` on the server
 
 Confirm the `ssh` service is running:
@@ -22,7 +21,6 @@ If the service is not running, start it:
 sudo systemctl enable --now ssh
 ```
 
----
 # Setup the server firewall
 
 Enable the firewall with
@@ -58,7 +56,6 @@ To                         Action      From
 443 (v6)                   ALLOW       Anywhere (v6)
 ```
 
-___
 # Setup the Cloudflare Tunnel
 
 Follow the instructions for [creating a locally managed tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-local-tunnel/).
@@ -123,7 +120,6 @@ Run the tunnel:
 cloudflared tunnel run <UUID or NAME>
 ```
 
-___
 # Run `cloudflared` as a service
 
 In order to make the ensure the server always connects to the Cloudflare tunnel even on system reboot, `cloudflared` needs to be as a service. 

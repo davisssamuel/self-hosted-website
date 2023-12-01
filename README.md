@@ -62,11 +62,11 @@ To                         Action      From
 
 # Setup the Cloudflare Tunnel
 
-Follow the instructions for [creating a locally managed tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-local-tunnel/).
+Follow the instructions for [creating a locally managed tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-local-tunnel/). After you have authenticated `cloudflared` via the browser popup (step 2), begin creating the tunnel.
 
 NOTE: be sure to follow the commands for **Linux** when downloading and installing `cloudflared`.
 
-After you have authenticated `cloudflared` via the browser popup (step 2), begin creating the tunnel. 
+
 
 Create a tunnel and give it a name: 
 

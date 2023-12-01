@@ -120,7 +120,7 @@ cloudflared tunnel route dns <UUID or NAME> <hostname>
 For example, based on the above config file's ingress rules, the command to assign `CNAME` records would be:
 
 ```
-cloudflared tunnel route dns <Tunnel-UUID> example.com ;
+cloudflared tunnel route dns <Tunnel-UUID> example.com
 cloudflared tunnel route dns <Tunnel-UUID> ssh.example.com
 ```
 

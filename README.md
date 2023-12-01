@@ -46,7 +46,7 @@ Confirm the firewall rules were added:
 ```
 sudo ufw status
 ```
-
+<!--
 Output:
 
 ```
@@ -59,6 +59,7 @@ To                         Action      From
 80/tcp (v6)                ALLOW       Anywhere (v6)             
 443 (v6)                   ALLOW       Anywhere (v6)
 ```
+-->
 
 # Setup the Cloudflare Tunnel
 

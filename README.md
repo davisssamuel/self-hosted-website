@@ -63,7 +63,7 @@ To                         Action      From
 
 # Setup the Cloudflare Tunnel
 
-Once `ssh` is setup on the server, you can connect to server from a client to complete the tunnel setup:
+Once `ssh` is setup on the server, you can connect to server from another local client to complete the tunnel setup:
 
 ```
 ssh <USER>@<Server-IP>

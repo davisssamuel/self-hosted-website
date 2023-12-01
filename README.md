@@ -36,8 +36,8 @@ sudo ufw enable
 Allow firewall access to `ssh`, `http`, and `https`:
 
 ```
-sudo ufw allow ssh ;
-sudo ufw allow http ;
+sudo ufw allow ssh
+sudo ufw allow http
 sudo ufw allow https
 ```
 
@@ -62,11 +62,15 @@ To                         Action      From
 
 # Setup the Cloudflare Tunnel
 
-Follow the instructions for [adding a site to Cloudflare](https://developers.cloudflare.com/fundamentals/setup/account-setup/add-site/). Then, follow the instructions for [creating a locally managed tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-local-tunnel/) and stop after you have authenticated `cloudflared` via the browser popup (step 2).
+Once `ssh` is setup on the server, you can connect to server from a client to complete the tunnel setup:
+
+```
+ssh <USER>@<Server-IP>
+```
+
+First, follow the instructions for [adding a site to Cloudflare](https://developers.cloudflare.com/fundamentals/setup/account-setup/add-site/). Then, follow the instructions for [creating a locally managed tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-local-tunnel/) and stop after you have authenticated `cloudflared` via the browser popup (step 2).
 
 NOTE: be sure to follow the commands for **Linux** when downloading and installing `cloudflared`.
-
-
 
 Create a tunnel and give it a name: 
 

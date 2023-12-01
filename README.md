@@ -1,6 +1,3 @@
-# [davisssamuel.net](https://davisssamuel.net)
-
-
 # Setup the Ubuntu Server
 
 Flash an [Ubuntu Server](https://ubuntu.com/download/server) .iso file to a USB flash drive using [Balena Etcher](https://etcher.balena.io/)

@@ -1,11 +1,19 @@
-# Setup the Ubuntu Server
+# Install the Ubuntu Server
 
-Flash an [Ubuntu Server](https://ubuntu.com/download/server) .iso file to a USB flash drive using [Balena Etcher](https://etcher.balena.io/)
+Flash an [Ubuntu Server](https://ubuntu.com/download/server) `.iso` file to a USB flash drive using [Balena Etcher](https://etcher.balena.io/)
 
-With the flash drive in the desktop, go into the BIOS and changed the boot order to use the USB flash drive first. 
+With the flash drive on the system, go into the BIOS and changed the boot order to use the USB flash drive first.
 <!-- I had to hold F2 on restart to enter into the BIOS on my system. -->
 
-Using the installation TUI, choose the default options and install the Ubuntu Server onto the desktop.
+Using the installation TUI, choose the default options and install the Ubuntu Server onto the system.
+
+NOTE: be sure to choose to install OpenSSH when prompted.
+
+After the system reboots, login and update the system:
+
+```
+sudo apt update && sudo apt upgrade
+```
 
 # Setup `ssh` on the server
 
@@ -21,9 +29,9 @@ If the service is not running, start it:
 sudo systemctl enable --now ssh
 ```
 
-# Setup the server firewall
+## Setup the server firewall
 
-Enable the firewall with
+Enable the firewall:
 
 ```
 sudo ufw enable
@@ -60,7 +68,7 @@ To                         Action      From
 
 Follow the instructions for [creating a locally managed tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-local-tunnel/).
 
-NOTE: be sure to follow the commands for **Linux** when downloading and installing `cloudflared`
+NOTE: be sure to follow the commands for **Linux** when downloading and installing `cloudflared`.
 
 After you have authenticated `cloudflared` via the browser popup (step 2), begin creating the tunnel. 
 
@@ -108,7 +116,7 @@ Assign a `CNAME` record that points traffic to your tunnel domain/subdomain:
 cloudflared tunnel route dns <UUID or NAME> <hostname>
 ```
 
-For example, based on the above config file's ingress rules:
+For example, based on the above config file's ingress rules, the command to assign `CNAME` records would be:
 
 ```
 cloudflared tunnel route dns <Tunnel-UUID> example.com ;
@@ -145,7 +153,14 @@ Confirm the service is running:
 systemctl status cloudflared
 ```
 
-Ensure the `config.yml` file in `~/.cloudflared/` is identical to the one in `/etc/cloudflared/`:
+If the the `config.yml` file in `~/.cloudflared/` is not identical to the one in `/etc/cloudflared/`, connecting to the server with `ssh` will throw:
+
+```
+kex_exchange_identification: Connection closed by remote host
+Connection closed by UNKNOWN port 65535
+```
+
+Confirm the config files are identical:
 
 ```
 diff -ws ~/.cloudflared/config.yml /etc/cloudflared/config.yml

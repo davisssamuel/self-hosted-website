@@ -132,7 +132,7 @@ cloudflared tunnel run <UUID or NAME>
 
 ## Run `cloudflared` as a service
 
-In order to make the ensure the server always connects to the Cloudflare tunnel even on system reboot, `cloudflared` needs to be as a service. 
+In order to make the ensure the server always connects to the Cloudflare tunnel even on system reboot, `cloudflared` needs to be as a service.
 
 Stop running the tunnel from above with `Ctrl + c`
 
@@ -153,6 +153,8 @@ Confirm the service is running:
 ```
 sudo systemctl status cloudflared
 ```
+
+## [Connection closed by UNKNOWN port 65535](https://community.cloudflare.com/t/unable-to-ssh-using-cloudflared/357068)
 
 If the the `config.yml` file in `~/.cloudflared/` is not identical to the one in `/etc/cloudflared/`, connecting to the server with `ssh` will throw:
 

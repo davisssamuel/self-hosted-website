@@ -154,9 +154,9 @@ Confirm the service is running:
 sudo systemctl status cloudflared
 ```
 
-## Connection closed by UNKNOWN port 65535 [:link:](https://community.cloudflare.com/t/unable-to-ssh-using-cloudflared/357068)
+## ERROR: Connection closed by UNKNOWN port 65535 [:link:](https://community.cloudflare.com/t/unable-to-ssh-using-cloudflared/357068)
 
-If the the `config.yml` file in `~/.cloudflared/` is not identical to the one in `/etc/cloudflared/`, connecting to the server with `ssh` will throw:
+If the the `config.yml` file in `~/.cloudflared/` is not identical to the one in `/etc/cloudflared/`, attempting to connect to the server with `ssh` will throw an error:
 
 ```
 kex_exchange_identification: Connection closed by remote host
@@ -173,4 +173,10 @@ If the files are different, copy the `config.yml` from `~/.cloudflared/` to `/et
 
 ```
 sudo cp ~/.cloudflared/config.yml /etc/cloudflared/config.yml
+```
+
+Restart the `cloudflared` service:
+
+```
+sudo systemctl restart cloudflared
 ```

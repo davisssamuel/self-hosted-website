@@ -1,7 +1,6 @@
 # Install the Ubuntu Server
 
 Download [Ubuntu Server](https://ubuntu.com/download/server) and flash the `.iso` file to a USB drive using [Balena Etcher](https://etcher.balena.io/). With the USB drive in the system, go into the BIOS and change the boot order to use the USB drive first. Using the installation TUI, choose the default options and install the Ubuntu Server onto the system.
-<!-- I had to hold F2 on restart to enter into the BIOS on my system. --> 
 
 NOTE: be sure to choose to install OpenSSH when prompted.
 
@@ -46,20 +45,6 @@ Confirm the firewall rules were added:
 ```
 sudo ufw status
 ```
-<!--
-Output:
-
-```
-To                         Action      From
---                         ------      ----
-22/tcp                     ALLOW       Anywhere                  
-80/tcp                     ALLOW       Anywhere                  
-443                        ALLOW       Anywhere                  
-22/tcp (v6)                ALLOW       Anywhere (v6)             
-80/tcp (v6)                ALLOW       Anywhere (v6)             
-443 (v6)                   ALLOW       Anywhere (v6)
-```
--->
 
 # Setup the Cloudflare Tunnel
 

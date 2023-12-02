@@ -154,7 +154,7 @@ Confirm the service is running:
 sudo systemctl status cloudflared
 ```
 
-## [Connection closed by UNKNOWN port 65535](https://community.cloudflare.com/t/unable-to-ssh-using-cloudflared/357068)
+## Connection closed by UNKNOWN port 65535 [:link:](https://community.cloudflare.com/t/unable-to-ssh-using-cloudflared/357068)
 
 If the the `config.yml` file in `~/.cloudflared/` is not identical to the one in `/etc/cloudflared/`, connecting to the server with `ssh` will throw:
 

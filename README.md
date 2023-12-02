@@ -80,7 +80,7 @@ touch ~/.cloudflared/config.yml
 # config.yml
 
 tunnel: <Tunnel-UUID>
-credentials-file: /home/sam/.cloudflared/<Tunnel-UUID>.json
+credentials-file: /home/<USER>/.cloudflared/<Tunnel-UUID>.json
 
 ingress:
   - hostname: example.com

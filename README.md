@@ -96,6 +96,10 @@ Validate ingress rules:
 cloudflared tunnel ingress validate
 ```
 
+## Assign `CNAME` records
+
+Follow the instructions for [deleting DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#delete-dns-records) to delete all the existing DNS records. You will assign new DNS records that point traffic to the tunnel.
+
 Assign a `CNAME` record that points traffic to your tunnel domain/subdomain:
 
 ```

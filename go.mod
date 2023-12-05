@@ -1,3 +1,3 @@
-module davisssamuel.net/main
+module davisssamuel.net
 
 go 1.21.4

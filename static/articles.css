@@ -72,31 +72,18 @@ a:hover {
   flex-direction: row;
 }
 
-#title > a {
-  margin-top: 0;
-  color: var(--color-primary);
+#bio > div > h1 {
+  font-weight: 400;
+  /* font-size: 1rem; */
 }
 
-#articles {
+#article {
   min-width: 300px;
   display: flex;
   flex-direction: column;
   max-width: unset;
   margin-top: 1rem;
   /* border: 0.1rem solid var(--color-primary); */
-}
-
-#articles > div {
-  margin-bottom: 1rem;
-  cursor: pointer;
-}
-
-#articles > div > a {
-  color: var(--color-primary);
-}
-
-#articles > div > a:hover {
-  color: unset;
 }
 
 @media (min-width: calc(700px - 10vh )) {

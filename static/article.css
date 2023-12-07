@@ -19,15 +19,18 @@ body {
 }
 
 body {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+
   background-color: var(--color-background);
   color: var(--color-primary);
 }
-
-#container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding-top: 2em;
+body > div {
+  max-width: 500px;
+}
+body > div p {
+  font-family: "Poppins", sans-serif;
 }
 
 h1,
@@ -38,7 +41,7 @@ a {
   margin: 0.25rem 0;
 }
 
-h1 {
+h1, h2, h3 {
   font-weight: 400;
   font-size: 1.25rem;
 }
@@ -57,63 +60,9 @@ a:hover {
   color: var(--color-hover);
 }
 
-#bio {
-  display: flex;
-  flex-direction: column;
-  margin-top: 2rem;
-  margin-right: 2em;
+#title {
+  margin: 2rem 0 1rem;
 }
-
-#bio > div {
-  display: flex;
-  flex-direction: row;
-}
-
-#title > a {
-  margin: 0;
-  color: var(--color-primary);
-}
-
-#articles {
-  max-width: 500px;
-  display: flex;
-  flex-direction: column;
-  /* border: 0.1rem solid var(--color-primary); */
-}
-
-#articles > div {
-  padding: 1em;
-}
-
-#articles a {
-  color: var(--color-primary);
-}
-
-#articles p {
-  font-family: "Poppins", sans-serif;
-}
-
-@media (max-aspect-ratio: 1/1) or (max-width: 700px) {
-  body {
-    display: flex;
-    justify-content: center;
-  }
-  #container {
-    display: flex;
-    flex-direction: column;
-    padding: 2em;
-  }
-  #bio {
-    display: flex;
-    flex-direction: column;
-    margin-top: 0;
-    margin-right: 0;
-    padding: 0 1em;
-  }
-  #articles {
-    margin-top: 1em;
-  }
-  #articles > div {
-    padding: 1em;
-  }
+#title > p {
+  font-family: "JetBrains Mono", monospace;
 }

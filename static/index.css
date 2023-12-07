@@ -84,9 +84,8 @@ a:hover {
   padding: 1rem;
   color: var(--color-primary);
 }
-#articles > a > p {
+#articles > a > p:nth-child(3) {  
   font-family: "Poppins", sans-serif;
-  
   white-space: nowrap; 
   text-overflow: ellipsis;
   overflow: hidden;

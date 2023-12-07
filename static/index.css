@@ -76,18 +76,24 @@ a:hover {
   display: flex;
   flex-direction: column;
 }
-#articles > p {
-  margin: 0 1rem;
-  /* padding-bottom: 0.5rem; */
-  /* margin: 0 1rem 1rem; */
-  /* border-bottom: 0.1rem solid var(--color-primary); */
-}
 #articles > a {
   display: flex;
   flex-direction: column;
   margin: 0;
   padding: 1rem;
   color: var(--color-primary);
+}
+#articles > a > p {
+  overflow: hidden;
+  white-space: nowrap; 
+  text-overflow: ellipsis;
+  font-family: "Poppins", sans-serif;
+}
+#articles > p {
+  margin: 0 1rem;
+  /* padding-bottom: 0.5rem; */
+  /* margin: 0 1rem 1rem; */
+  /* border-bottom: 0.1rem solid var(--color-primary); */
 }
 #articles > a:hover {
   /* box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.07); */

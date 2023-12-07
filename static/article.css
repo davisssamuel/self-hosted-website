@@ -7,8 +7,6 @@
   --color-secondary: #add8e6;
   --color-highlight: #add8e6;
   --color-hover: #d4eaf2;
-
-  font-family: "JetBrains Mono", monospace;
 }
 
 html,
@@ -44,6 +42,7 @@ h2,
 h3,
 p,
 a {
+  font-family: "JetBrains Mono", monospace;
   margin: 0.25rem 0;
 }
 

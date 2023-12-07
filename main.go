@@ -18,9 +18,17 @@ func main() {
 		tmpl.Execute(w, nil)
 	})
 
-	mux.HandleFunc("/self-hosted-website", func(w http.ResponseWriter, r *http.Request) {
-		tmpl := template.Must(template.ParseFiles("./templates/self-hosted-website.html"))
-		tmpl.Execute(w, nil)
+	// mux.HandleFunc("/self-hosted-website", func(w http.ResponseWriter, r *http.Request) {
+	// 	tmpl := template.Must(template.ParseFiles("./templates/self-hosted-website.html"))
+	// 	tmpl.Execute(w, nil)
+	// })
+
+	mux.HandleFunc("/article/{name}", func(w http.ResponseWriter, r *http.Request) {
+		article := r.PathValue("name")
+		log.Println(article)
+
+		// tmpl := template.Must(template.ParseFiles("./templates/self-hosted-website.html"))
+		// tmpl.Execute(w, nil)
 	})
 
 	log.Println("site running on port 3000...")

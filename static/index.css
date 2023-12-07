@@ -86,6 +86,7 @@ a:hover {
 }
 #articles > a > p:nth-child(3) {  
   font-family: "Poppins", sans-serif;
+  
   white-space: nowrap; 
   text-overflow: ellipsis;
   overflow: hidden;

@@ -23,6 +23,6 @@ func main() {
 		tmpl.Execute(w, nil)
 	})
 
-	log.Println("site running on port 8000...")
-	log.Fatal(http.ListenAndServe(":8000", mux))
+	log.Println("site running on port 3000...")
+	log.Fatal(http.ListenAndServe(":3000", mux))
 }

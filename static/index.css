@@ -103,7 +103,7 @@ a:hover {
   /* color: var(--color-secondary); */
 }
 
-@media (max-aspect-ratio: 1/1) {
+@media (max-aspect-ratio: 1/1) or (min-aspect-ratio: 3/4) {
   body > div {
     width: calc(100vw - 4rem);
   }

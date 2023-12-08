@@ -30,19 +30,15 @@ body > div {
 }
 
 h1,
-h2,
-h3,
 p,
 a {
   font-family: "JetBrains Mono", monospace;
   margin: 0.25rem 0;
 }
 
-h1,
-h2,
-h3 {
+h1 {
+  font-size: 1.2rem;
   font-weight: 400;
-  font-size: 1.25rem;
 }
 
 p,
@@ -54,7 +50,6 @@ a {
   color: var(--color-secondary);
   text-decoration: none;
 }
-
 a:hover {
   color: var(--color-hover);
 }
@@ -97,10 +92,5 @@ a:hover {
 @media (max-aspect-ratio: 1/1) or (min-aspect-ratio: 3/4) {
   body > div {
     width: calc(100vw - 4rem);
-  }
-  #articles > a > p {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
   }
 }

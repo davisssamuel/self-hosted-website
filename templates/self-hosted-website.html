@@ -19,13 +19,25 @@
       <div>
         <h1>Install the Ubuntu Server</h1>
         <p>
-          Download Ubuntu Server and flash the <code>.iso</code> file to a USB drive using Balena Etcher. With the USB drive in the system, go into the
+          Download <a href="https://ubuntu.com/download/server">Ubuntu Server</a> and flash the <code>.iso</code> file to a USB drive using Balena Etcher. With the USB drive in the system, go into the
           BIOS and change the boot order to use the USB drive first. Using the installation TUI, choose the default options and install the Ubuntu
           Server onto the system.
         </p>
         <p>NOTE: be sure to choose to install OpenSSH when prompted.</p>
         <p>After the system reboots, login and update the system:</p>
-        <pre><code>sudo apt update && sudo apt upgrade</code></pre>
+        <pre><code id="command">sudo apt update && sudo apt upgrade</code></pre>
+      </div>
+      <div>
+        <h1>Setup ssh on the server</h1>
+        <p>Confirm the <code>ssh</code> service is running:</p>
+        <pre><code id="command">sudo systemctl status ssh</code></pre>
+        <p>If the service is not running, start it:</p>
+        <pre><code id="command">sudo systemctl enable --now ssh</code></pre>
+      </div>
+      <div>
+        <h2>Setup the server firewall</h2>
+        <p>Enable the firewall:</p>
+        <pre><code id="command">sudo ufw enable</code></pre>
       </div>
     </div>
   </body>

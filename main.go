@@ -23,6 +23,11 @@ func main() {
 		tmpl.Execute(w, nil)
 	})
 
+	mux.HandleFunc("/routing-with-go", func(w http.ResponseWriter, r *http.Request) {
+		tmpl := template.Must(template.ParseFiles("./templates/routing-with-go.html"))
+		tmpl.Execute(w, nil)
+	})
+
 	log.Println("site running on port 3000...")
 	log.Fatal(http.ListenAndServe(":3000", mux))
 }

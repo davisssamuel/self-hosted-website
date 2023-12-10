@@ -29,7 +29,7 @@ body > div {
   flex-direction: column;
 }
 #body-wrapper {
-  max-width: 500px;
+  max-width: 600px;
 }
 #body-wrapper > a:first-child {
   font-family: "JetBrains Mono", monospace;
@@ -51,8 +51,7 @@ h3 {
   margin: 1rem 0 0.5rem;
 }
 
-p,
-a {
+p {
   margin: 0.25rem 0;
 }
 
@@ -96,7 +95,7 @@ pre {
   border-radius: 0.25rem;
   border: 2px solid rgba(255, 255, 255, 0.125);
 }
-pre code {
+pre > code {
   display: block;
   padding: 0;
   margin: 0;
@@ -105,7 +104,7 @@ pre code {
   background-color: transparent;
 }
 
-#command::before {
+pre > #command::before {
   content: "$ ";
 }
 

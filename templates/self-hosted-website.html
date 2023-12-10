@@ -1,10 +1,11 @@
 {{define "title"}}Self-Hosted Website{{end}} 
 
 {{define "body"}}
-<p>29 Nov 2023</p>
+<p>10 Dec 2023</p>
 <h1>Self-Hosted Website</h1>
 <p>I bought a Dell OptiPlex 3050 and put an Ubuntu Server on it to host this website.</p>
 
+<!-- =========================================================================================== -->
 <h1>Install the Ubuntu Server</h1>
 <p>
   Download
@@ -29,9 +30,10 @@
 <p>Confirm the firewall rules were added:</p>
 <pre><code id="command">sudo ufw status</code></pre>
 
+<!-- =========================================================================================== -->
 <h1>Setup the Cloudflare Tunnel</h1>
 <p>Once <code>ssh</code> is setup on the server, you can connect to server from another local client to complete the tunnel setup:</p>
-<pre><code id="command">ssh user@server-ip</code></pre>
+<pre><code id="command">ssh user@server-IP</code></pre>
 <p>
   First, follow the instructions for <a href="https://developers.cloudflare.com/fundamentals/setup/account-setup/add-site/">adding a site to Cloudflare</a>. Then, follow the instructions for
   <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-local-tunnel/">creating a locally managed tunnel</a> but stop after you have authenticated
@@ -55,4 +57,37 @@ ingress:
   - hostname: ssh.example.com
     service: ssh://localhost:22
   - service: http_status:404</code></pre>
+<p>Validate ingress rules:</p>
+<pre><code id="command">cloudflared tunnel ingress validate</code></pre>
+<p>Assign a <code>CNAME</code> record that points traffic to your tunnel domain/subdomain:</p>
+<pre><code id="command">cloudflared tunnel route dns tunnel-name hostname</code></pre>
+<p>For example, based on the above config file's ingress rules, the command to assign <code>CNAME</code> records would be:</p>
+<pre><code id="command">cloudflared tunnel route dns tunnel-name example.com</code><code id="command">cloudflared tunnel route dns tunnel-name ssh.example.com</code></pre>
+<p>Run the tunnel:</p>
+<pre><code id="command">cloudflared tunnel run tunnel-name</code></pre>
+
+<!-- =========================================================================================== -->
+<h2>Run cloudflared as a service</h2>
+<p>In order to make the ensure the server always connects to the Cloudflare tunnel even on system reboot, <code>cloudflared</code> needs to be as a service.</p>
+<p>Stop running the tunnel from above with <code>Ctrl + c</code></p>
+<p>Install <code>cloudflared</code> service:</p>
+<pre><code id="command">cloudflared service install</code></pre>
+<p>Start the service:</p>
+<pre><code id="command">sudo systemctl start cloudflared</code></pre>
+<p>Confirm the service is running:</p>
+<pre><code id="command">sudo systemctl status cloudflared</code></pre>
+
+<!-- =========================================================================================== -->
+<a href="https://community.cloudflare.com/t/unable-to-ssh-using-cloudflared/357068">
+  <h1>ERROR: Connection closed by UNKNOWN port 65535</h1>
+</a>
+<p>If the the <code>config.yml</code> file in <code>~/.cloudflared/</code> is not identical to the one in <code>/etc/cloudflared/</code>, attempting to connect to the server with ssh will throw an error:</p>
+<pre><code>kex_exchange_identification: Connection closed by remote host
+Connection closed by UNKNOWN port 65535</code></pre>
+<p>Confirm the config files are identical:</p>
+<pre><code id="command">diff -ws ~/.cloudflared/config.yml /etc/cloudflared/config.yml</code></pre>
+<p>If the files are different, copy the <code>config.yml</code> from <code>~/.cloudflared/</code> to <code>/etc/cloudflared/</code>:</p>
+<pre><code id="command">sudo cp ~/.cloudflared/config.yml /etc/cloudflared/config.yml</code></pre>
+<p>Restart the <code>cloudflared</code> service:</p>
+<pre><code id="command">sudo systemctl restart cloudflared</code></pre>
 {{end}}

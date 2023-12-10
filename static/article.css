@@ -24,33 +24,22 @@ body {
   background-color: var(--color-background);
   color: var(--color-primary);
 }
-body div {
+body > div {
   display: flex;
   flex-direction: column;
 }
-body > div {
+#body-wrapper {
   max-width: 500px;
 }
-body > div > div {
-  margin-top: 1rem;
-}
-body > div > a:first-child {
+#body-wrapper > a:first-child {
   font-family: "JetBrains Mono", monospace;
 }
-
-#title {
-  margin-top: 2rem;
-}
-#title > p:first-child {
-  font-family: "JetBrains Mono", monospace;
-}
-
-h1,
-h2,
-h3,
-p,
-a {
+#body-wrapper > h1:nth-child(3) {
   margin: 0.25rem 0;
+}
+#body-wrapper > p:nth-child(2) {
+  font-family: "JetBrains Mono", monospace;
+  margin-top: 2rem;
 }
 
 h1,
@@ -58,6 +47,13 @@ h2,
 h3 {
   font-family: "JetBrains Mono", monospace;
   font-weight: 400;
+
+  margin: 1rem 0 0.5rem;
+}
+
+p,
+a {
+  margin: 0.25rem 0;
 }
 
 h1 {
@@ -90,32 +86,23 @@ code {
   margin: 0 0.15rem;
   border-radius: 0.25rem;
   background-color: rgba(255, 255, 255, 0.25);
-}
-h1 > code {
-  font-size: unset;
-}
-pre {
-  display: flex;
-  flex-direction: column;
-  margin: 0.5rem 0;
-  border: 2px solid rgba(255, 255, 255, 0.25);
-  border-radius: 0.25rem;
-}
-pre > code {
-  flex: 1;
-  margin: 0;
-  padding: 0 0.5rem 0.5rem;
-  background-color: transparent;
-
+  
   white-space: nowrap;
   overflow: scroll;
   scrollbar-width: none;
 }
-pre > code:first-child {
+pre {
   padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 2px solid rgba(255, 255, 255, 0.125);
 }
-pre > code::-webkit-scrollbar {
-  display: none;
+pre code {
+  display: block;
+  padding: 0;
+  margin: 0;
+  white-space: pre;
+  border-radius: unset;
+  background-color: transparent;
 }
 
 #command::before {

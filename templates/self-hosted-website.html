@@ -1,66 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Self-Hosted Website</title>
-    <link rel="stylesheet" href="/static/article.css" />
-  </head>
+{{define "title"}}Self-Hosted Website{{end}} 
 
-  <body>
-    <div>
-      <a href="/">&larr; articles</a>
-      <div id="title">
-        <p>29 Nov 2023</p>
-        <h1>Self-Hosted Website</h1>
-        <p>I bought a Dell OptiPlex 3050 and put an Ubuntu Server on it to host this website.</p>
-      </div>
-      <div>
-        <h1>Install the Ubuntu Server</h1>
-        <p>
-          Download
-          <a href="https://ubuntu.com/download/server">Ubuntu Server</a> and flash the <code>.iso</code> file to a USB drive using <a href="https://etcher.balena.io/">Balena Etcher</a>. With the USB
-          drive in the system, go into the BIOS and change the boot order to use the USB drive first. Using the installation TUI, choose the default options and install the Ubuntu Server onto the
-          system.
-        </p>
-        <p>NOTE: be sure to choose to install OpenSSH when prompted.</p>
-        <p>After the system reboots, login and update the system:</p>
-        <pre><code id="command">sudo apt update && sudo apt upgrade</code></pre>
-      </div>
-      <div>
-        <h1>Setup ssh on the server</h1>
-        <p>Confirm the <code>ssh</code> service is running:</p>
-        <pre><code id="command">sudo systemctl status ssh</code></pre>
-        <p>If the service is not running, start it:</p>
-        <pre><code id="command">sudo systemctl enable --now ssh</code></pre>
-      </div>
-      <div>
-        <h2>Setup the server firewall</h2>
-        <p>Enable the firewall:</p>
-        <pre><code id="command">sudo ufw enable</code></pre>
-        <p>Allow firewall access to <code>ssh</code>, <code>http</code>, and <code>https</code>:</p>
-        <pre>
-          <code id="command">sudo ufw allow ssh</code>
-          <code id="command">sudo ufw allow http</code>
-          <code id="command">sudo ufw allow https</code>
-        </pre>
-        <p>Confirm the firewall rules were added:</p>
-        <pre><code id="command">sudo ufw status</code></pre>
-      </div>
-      <div>
-        <h1>Setup the Cloudflare Tunnel</h1>
-        <p>Once <code>ssh</code> is setup on the server, you can connect to server from another local client to complete the tunnel setup:</p>
-        <pre><code id="command">ssh user@server-ip</code></pre>
-        <p>
-          First, follow the instructions for <a href="https://developers.cloudflare.com/fundamentals/setup/account-setup/add-site/">adding a site to Cloudflare</a>. Then, follow the instructions for
-          <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-local-tunnel/">creating a locally managed tunnel</a> but stop after you have
-          authenticated <code>cloudflared</code> via the browser popup (step 2).
-        </p>
-        <p>NOTE: be sure to follow the commands for Linux when downloading and installing <code>cloudflared</code></p>
-        <p>Create a tunnel and give it a name:</p>
-        <pre><code id="command">cloudflared tunnel create tunnel-name</code></pre>
-      </div>
-    </div>
-  </body>
-</html>
+{{define "body"}}
+<p>29 Nov 2023</p>
+<h1>Self-Hosted Website</h1>
+<p>I bought a Dell OptiPlex 3050 and put an Ubuntu Server on it to host this website.</p>
+
+<h1>Install the Ubuntu Server</h1>
+<p>
+  Download
+  <a href="https://ubuntu.com/download/server">Ubuntu Server</a> and flash the <code>.iso</code> file to a USB drive using <a href="https://etcher.balena.io/">Balena Etcher</a>. With the USB drive in
+  the system, go into the BIOS and change the boot order to use the USB drive first. Using the installation TUI, choose the default options and install the Ubuntu Server onto the system.
+</p>
+<p>NOTE: be sure to choose to install OpenSSH when prompted.</p>
+<p>After the system reboots, login and update the system:</p>
+<pre><code id="command">sudo apt update && sudo apt upgrade</code></pre>
+
+<h1>Setup ssh on the server</h1>
+<p>Confirm the <code>ssh</code> service is running:</p>
+<pre><code id="command">sudo systemctl status ssh</code></pre>
+<p>If the service is not running, start it:</p>
+<pre><code id="command">sudo systemctl enable --now ssh</code></pre>
+
+<h2>Setup the server firewall</h2>
+<p>Enable the firewall:</p>
+<pre><code id="command">sudo ufw enable</code></pre>
+<p>Allow firewall access to <code>ssh</code>, <code>http</code>, and <code>https</code>:</p>
+<pre><code id="command">sudo ufw allow ssh</code><code id="command">sudo ufw allow http</code><code id="command">sudo ufw allow https</code></pre>
+<p>Confirm the firewall rules were added:</p>
+<pre><code id="command">sudo ufw status</code></pre>
+
+<h1>Setup the Cloudflare Tunnel</h1>
+<p>Once <code>ssh</code> is setup on the server, you can connect to server from another local client to complete the tunnel setup:</p>
+<pre><code id="command">ssh user@server-ip</code></pre>
+<p>
+  First, follow the instructions for <a href="https://developers.cloudflare.com/fundamentals/setup/account-setup/add-site/">adding a site to Cloudflare</a>. Then, follow the instructions for
+  <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-local-tunnel/">creating a locally managed tunnel</a> but stop after you have authenticated
+  <code>cloudflared</code> via the browser popup (step 2).
+</p>
+<p>NOTE: be sure to follow the commands for Linux when downloading and installing <code>cloudflared</code></p>
+<p>Create a tunnel and give it a name:</p>
+<pre><code id="command">cloudflared tunnel create tunnel-name</code></pre>
+<p>Confirm that the tunnel has been successfully created by running:</p>
+<pre><code id="command">cloudflared tunnel list</code></pre>
+<p>Create a configuration file:</p>
+<pre><code id="command">touch ~/.cloudflared/config.yml</code></pre>
+<pre><code class="myPre"># config.yml
+      
+tunnel: tunnel-UUID
+credentials-file: /home/user/.cloudflared/tunnel-UUID.json
+
+ingress:
+  - hostname: example.com
+    service: http://localhost:8000
+  - hostname: ssh.example.com
+    service: ssh://localhost:22
+  - service: http_status:404</code></pre>
+{{end}}

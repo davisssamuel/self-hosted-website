@@ -4,6 +4,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"path/filepath"
 )
 
 func main() {
@@ -14,18 +15,24 @@ func main() {
 		http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		tmpl := template.Must(template.ParseFiles("./templates/index.html"))
-		tmpl.Execute(w, nil)
+		lp := filepath.Join("templates", "index.html")
+		fp := filepath.Join("templates", "articles.html")
+		tmpl, _ := template.ParseFiles(lp, fp)
+		tmpl.ExecuteTemplate(w, "index", nil)
 	})
 
 	mux.HandleFunc("/self-hosted-website", func(w http.ResponseWriter, r *http.Request) {
-		tmpl := template.Must(template.ParseFiles("./templates/self-hosted-website.html"))
-		tmpl.Execute(w, nil)
+		lp := filepath.Join("templates", "layout.html")
+		fp := filepath.Join("templates", "self-hosted-website.html")
+		tmpl, _ := template.ParseFiles(lp, fp)
+		tmpl.ExecuteTemplate(w, "layout", nil)
 	})
 
 	mux.HandleFunc("/routing-with-go", func(w http.ResponseWriter, r *http.Request) {
-		tmpl := template.Must(template.ParseFiles("./templates/routing-with-go.html"))
-		tmpl.Execute(w, nil)
+		lp := filepath.Join("templates", "layout.html")
+		fp := filepath.Join("templates", "routing-with-go.html")
+		tmpl, _ := template.ParseFiles(lp, fp)
+		tmpl.ExecuteTemplate(w, "layout", nil)
 	})
 
 	log.Println("site running on port 3000...")

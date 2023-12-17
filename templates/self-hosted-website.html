@@ -2,7 +2,7 @@
 <p>10 Dec 2023</p>
 <h1>Self-Hosted Website</h1>
 <p>
-  I've wanted to wipe an old desktop and run a server on it for awhile, so when my school's IT
+  I've wanted to wipe an old desktop and run a server on it for awhile, so when my university's IT
   department was having and equipment sale, I had to jump on the opportunity. I bought a Dell
   OptiPlex 3050 micro desktop and put an Ubuntu Server on which is hosting this website. The
   following is the documentation for how I went about installing the server and setting it up to run
@@ -10,63 +10,66 @@
 </p>
 
 <!-- =========================================================================================== -->
-<h1>Install the Ubuntu Server</h1>
-<p>
-  Download
-  <a href="https://ubuntu.com/download/server">Ubuntu Server</a> and flash the
-  <code>.iso</code> file to a USB drive using <a href="https://etcher.balena.io/">Balena Etcher</a>.
-  With the USB drive in the system, go into the BIOS and change the boot order to use the USB drive
-  first. Using the installation TUI, choose the default options and install the Ubuntu Server onto
-  the system.
-</p>
-<p>NOTE: be sure to choose to install OpenSSH when prompted.</p>
-<p>After the system reboots, login and update the system:</p>
-<pre><code id="command">sudo apt update && sudo apt upgrade</code></pre>
+<section id="install-the-ubuntu-server">
+  <h1>Install the Ubuntu Server</h1>
+  <p>
+    Download
+    <a href="https://ubuntu.com/download/server">Ubuntu Server</a> and flash the
+    <code>.iso</code> file to a USB drive using
+    <a href="https://etcher.balena.io/">Balena Etcher</a>. With the USB drive in the system, go into
+    the BIOS and change the boot order to use the USB drive first. Using the installation TUI,
+    choose the default options and install the Ubuntu Server onto the system.
+  </p>
+  <p>NOTE: be sure to choose to install OpenSSH when prompted.</p>
+  <p>After the system reboots, login and update the system:</p>
+  <pre><code class="command">sudo apt update && sudo apt upgrade</code></pre>
 
-<h1>Setup ssh on the server</h1>
-<p>Confirm the <code>ssh</code> service is running:</p>
-<pre><code id="command">sudo systemctl status ssh</code></pre>
-<p>If the service is not running, start it:</p>
-<pre><code id="command">sudo systemctl enable --now ssh</code></pre>
+  <h1 id="setup-ssh-on-the-server">Setup ssh on the server</h1>
+  <p>Confirm the <code>ssh</code> service is running:</p>
+  <pre><code class="command">sudo systemctl status ssh</code></pre>
+  <p>If the service is not running, start it:</p>
+  <pre><code class="command">sudo systemctl enable --now ssh</code></pre>
 
-<h2>Setup the server firewall</h2>
-<p>Enable the firewall:</p>
-<pre><code id="command">sudo ufw enable</code></pre>
-<p>Allow firewall access to <code>ssh</code>, <code>http</code>, and <code>https</code>:</p>
-<pre><code id="command">sudo ufw allow ssh</code><code id="command">sudo ufw allow http</code><code id="command">sudo ufw allow https</code></pre>
-<p>Confirm the firewall rules were added:</p>
-<pre><code id="command">sudo ufw status</code></pre>
+  <h2 id="setup-the-server-firewall">Setup the server firewall</h2>
+  <p>Enable the firewall:</p>
+  <pre><code class="command">sudo ufw enable</code></pre>
+  <p>Allow firewall access to <code>ssh</code>, <code>http</code>, and <code>https</code>:</p>
+  <pre><code class="command">sudo ufw allow ssh</code><code class="command">sudo ufw allow http</code><code class="command">sudo ufw allow https</code></pre>
+  <p>Confirm the firewall rules were added:</p>
+  <pre><code class="command">sudo ufw status</code></pre>
+</section>
 
 <!-- =========================================================================================== -->
-<h1>Setup the Cloudflare Tunnel</h1>
-<p>
-  Once <code>ssh</code> is setup on the server, you can connect to server from another local client
-  to complete the tunnel setup:
-</p>
-<pre><code id="command">ssh user@server-IP</code></pre>
-<p>
-  First, follow the instructions for
-  <a href="https://developers.cloudflare.com/fundamentals/setup/account-setup/add-site/"
-    >adding a site to Cloudflare</a
-  >. Then, follow the instructions for
-  <a
-    href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-local-tunnel/"
-    >creating a locally managed tunnel</a
-  >
-  but stop after you have authenticated <code>cloudflared</code> via the browser popup (step 2).
-</p>
-<p>
-  NOTE: be sure to follow the commands for Linux when downloading and installing
-  <code>cloudflared</code>
-</p>
-<p>Create a tunnel and give it a name:</p>
-<pre><code id="command">cloudflared tunnel create tunnel-name</code></pre>
-<p>Confirm that the tunnel has been successfully created by running:</p>
-<pre><code id="command">cloudflared tunnel list</code></pre>
-<p>Create a configuration file:</p>
-<pre><code id="command">touch ~/.cloudflared/config.yml</code></pre>
-<pre><code class="myPre"># config.yml
-      
+<section id="setup-the-cloudflare-tunnel">
+  <h1>Setup the Cloudflare Tunnel</h1>
+  <p>
+    Once <code>ssh</code> is setup on the server, you can connect to server from another local
+    client to complete the tunnel setup:
+  </p>
+  <pre><code class="command">ssh user@server-IP</code></pre>
+  <p>
+    First, follow the instructions for
+    <a href="https://developers.cloudflare.com/fundamentals/setup/account-setup/add-site/"
+      >adding a site to Cloudflare</a
+    >. Then, follow the instructions for
+    <a
+      href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-local-tunnel/"
+      >creating a locally managed tunnel</a
+    >
+    but stop after you have authenticated <code>cloudflared</code> via the browser popup (step 2).
+  </p>
+  <p>
+    NOTE: be sure to follow the commands for Linux when downloading and installing
+    <code>cloudflared</code>
+  </p>
+  <p>Create a tunnel and give it a name:</p>
+  <pre><code class="command">cloudflared tunnel create tunnel-name</code></pre>
+  <p>Confirm that the tunnel has been successfully created by running:</p>
+  <pre><code class="command">cloudflared tunnel list</code></pre>
+  <p>Create a configuration file:</p>
+  <pre><code class="command">touch ~/.cloudflared/config.yml</code></pre>
+  <pre><code class="myPre"># config.yml
+
 tunnel: tunnel-UUID
 credentials-file: /home/user/.cloudflared/tunnel-UUID.json
 
@@ -76,50 +79,55 @@ ingress:
   - hostname: ssh.example.com
     service: ssh://localhost:22
   - service: http_status:404</code></pre>
-<p>Validate ingress rules:</p>
-<pre><code id="command">cloudflared tunnel ingress validate</code></pre>
-<p>Assign a <code>CNAME</code> record that points traffic to your tunnel domain/subdomain:</p>
-<pre><code id="command">cloudflared tunnel route dns tunnel-name hostname</code></pre>
-<p>
-  For example, based on the above config file's ingress rules, the command to assign
-  <code>CNAME</code> records would be:
-</p>
-<pre><code id="command">cloudflared tunnel route dns tunnel-name example.com</code><code id="command">cloudflared tunnel route dns tunnel-name ssh.example.com</code></pre>
-<p>Run the tunnel:</p>
-<pre><code id="command">cloudflared tunnel run tunnel-name</code></pre>
+  <p>Validate ingress rules:</p>
+  <pre><code class="command">cloudflared tunnel ingress validate</code></pre>
+  <p>Assign a <code>CNAME</code> record that points traffic to your tunnel domain/subdomain:</p>
+  <pre><code class="command">cloudflared tunnel route dns tunnel-name hostname</code></pre>
+  <p>
+    For example, based on the above config file's ingress rules, the command to assign
+    <code>CNAME</code> records would be:
+  </p>
+  <pre><code class="command">cloudflared tunnel route dns tunnel-name example.com</code><code class="command">cloudflared tunnel route dns tunnel-name ssh.example.com</code></pre>
+  <p>Run the tunnel:</p>
+  <pre><code class="command">cloudflared tunnel run tunnel-name</code></pre>
+</section>
 
 <!-- =========================================================================================== -->
-<h2>Run cloudflared as a service</h2>
-<p>
-  In order to make the ensure the server always connects to the Cloudflare tunnel even on system
-  reboot, <code>cloudflared</code> needs to be as a service.
-</p>
-<p>Stop running the tunnel from above with <code>Ctrl + c</code></p>
-<p>Install <code>cloudflared</code> service:</p>
-<pre><code id="command">cloudflared service install</code></pre>
-<p>Start the service:</p>
-<pre><code id="command">sudo systemctl start cloudflared</code></pre>
-<p>Confirm the service is running:</p>
-<pre><code id="command">sudo systemctl status cloudflared</code></pre>
+<section id="run-cloudflared-as-a-service">
+  <h2>Run cloudflared as a service</h2>
+  <p>
+    In order to make the ensure the server always connects to the Cloudflare tunnel even on system
+    reboot, <code>cloudflared</code> needs to be as a service.
+  </p>
+  <p>Stop running the tunnel from above with <code>Ctrl + c</code></p>
+  <p>Install <code>cloudflared</code> service:</p>
+  <pre><code class="command">cloudflared service install</code></pre>
+  <p>Start the service:</p>
+  <pre><code class="command">sudo systemctl start cloudflared</code></pre>
+  <p>Confirm the service is running:</p>
+  <pre><code class="command">sudo systemctl status cloudflared</code></pre>
+</section>
 
 <!-- =========================================================================================== -->
-<a href="https://community.cloudflare.com/t/unable-to-ssh-using-cloudflared/357068">
-  <h1>ERROR: Connection closed by UNKNOWN port 65535</h1>
-</a>
-<p>
-  If the the <code>config.yml</code> file in <code>~/.cloudflared/</code> is not identical to the
-  one in <code>/etc/cloudflared/</code>, attempting to connect to the server with ssh will throw an
-  error:
-</p>
-<pre><code>kex_exchange_identification: Connection closed by remote host
+<section id="error-connection-closed-by-unknown-port-65535">
+  <a href="https://community.cloudflare.com/t/unable-to-ssh-using-cloudflared/357068">
+    <h1>ERROR: Connection closed by UNKNOWN port 65535</h1>
+  </a>
+  <p>
+    If the the <code>config.yml</code> file in <code>~/.cloudflared/</code> is not identical to the
+    one in <code>/etc/cloudflared/</code>, attempting to connect to the server with ssh will throw
+    an error:
+  </p>
+  <pre><code>kex_exchange_identification: Connection closed by remote host
 Connection closed by UNKNOWN port 65535</code></pre>
-<p>Confirm the config files are identical:</p>
-<pre><code id="command">diff -ws ~/.cloudflared/config.yml /etc/cloudflared/config.yml</code></pre>
-<p>
-  If the files are different, copy the <code>config.yml</code> from <code>~/.cloudflared/</code> to
-  <code>/etc/cloudflared/</code>:
-</p>
-<pre><code id="command">sudo cp ~/.cloudflared/config.yml /etc/cloudflared/config.yml</code></pre>
-<p>Restart the <code>cloudflared</code> service:</p>
-<pre><code id="command">sudo systemctl restart cloudflared</code></pre>
+  <p>Confirm the config files are identical:</p>
+  <pre><code class="command">diff -ws ~/.cloudflared/config.yml /etc/cloudflared/config.yml</code></pre>
+  <p>
+    If the files are different, copy the <code>config.yml</code> from
+    <code>~/.cloudflared/</code> to <code>/etc/cloudflared/</code>:
+  </p>
+  <pre><code class="command">sudo cp ~/.cloudflared/config.yml /etc/cloudflared/config.yml</code></pre>
+  <p>Restart the <code>cloudflared</code> service:</p>
+  <pre><code class="command">sudo systemctl restart cloudflared</code></pre>
+</section>
 {{end}}

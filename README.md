@@ -58,7 +58,7 @@ First, follow the instructions for [adding a site to Cloudflare](https://develop
 
 NOTE: be sure to follow the commands for **Linux** when downloading and installing `cloudflared`.
 
-Create a tunnel and give it a name: 
+Create a tunnel and give it a name:
 
 ```
 cloudflared tunnel create <NAME>
@@ -145,12 +145,14 @@ sudo systemctl status cloudflared
 
 ## ERROR: Connection closed by UNKNOWN port 65535 [:link:](https://community.cloudflare.com/t/unable-to-ssh-using-cloudflared/357068)
 
-If the the `config.yml` file in `~/.cloudflared/` is not identical to the one in `/etc/cloudflared/`, attempting to connect to the server with `ssh` will throw an error:
+If you do not have `cloudflared` installed on the remote system you want to use to `ssh` into the server, attempting to connect to the server will throw an error:
 
 ```
 kex_exchange_identification: Connection closed by remote host
 Connection closed by UNKNOWN port 65535
 ```
+
+Additionally, if the the `config.yml` file in `~/.cloudflared/` is not identical to the one in `/etc/cloudflared/`, you will receive the same error.
 
 Confirm the config files are identical:
 

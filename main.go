@@ -22,17 +22,17 @@ func main() {
 	})
 
 	mux.HandleFunc("/self-hosted-website", func(w http.ResponseWriter, r *http.Request) {
-		lp := filepath.Join("templates", "layout.html")
+		lp := filepath.Join("templates", "article-layout.html")
 		fp := filepath.Join("templates", "self-hosted-website.html")
 		tmpl, _ := template.ParseFiles(lp, fp)
-		tmpl.ExecuteTemplate(w, "layout", nil)
+		tmpl.ExecuteTemplate(w, "article-layout", nil)
 	})
 
 	mux.HandleFunc("/routing-with-go", func(w http.ResponseWriter, r *http.Request) {
-		lp := filepath.Join("templates", "layout.html")
+		lp := filepath.Join("templates", "article-layout.html")
 		fp := filepath.Join("templates", "routing-with-go.html")
 		tmpl, _ := template.ParseFiles(lp, fp)
-		tmpl.ExecuteTemplate(w, "layout", nil)
+		tmpl.ExecuteTemplate(w, "article-layout", nil)
 	})
 
 	log.Println("site running on port 3000...")

@@ -116,7 +116,7 @@ pre {
   border: 2px solid rgba(255, 255, 255, 0.125);
 }
 pre > code {
-  display: block;
+  /* display: block; */
   padding: 0;
   margin: 0;
   white-space: pre;
@@ -126,17 +126,6 @@ pre > code {
 
 pre > .command::before {
   content: "$ ";
-}
-
-/* Hide scrollbar for Chrome, Safari and Opera */
-pre::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-pre {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
 }
 
 @media (max-aspect-ratio: 1/1) or (min-aspect-ratio: 3/4) {

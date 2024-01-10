@@ -129,12 +129,12 @@ pre > .command::before {
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-.example::-webkit-scrollbar {
+pre::-webkit-scrollbar {
   display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-.example {
+pre {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }

@@ -116,12 +116,20 @@ pre {
   border: 2px solid rgba(255, 255, 255, 0.125);
 }
 pre > code {
-  /* display: block; */
+  display: block;
   padding: 0;
   margin: 0;
   white-space: pre;
   border-radius: unset;
   background-color: transparent;
+}
+
+/* remove scrollbars */
+pre > code::-webkit-scrollbar {
+  width: 0;
+}
+pre > code {
+  scrollbar-width: none;
 }
 
 pre > .command::before {

@@ -21,16 +21,10 @@ func main() {
 		tmpl.ExecuteTemplate(w, "index", nil)
 	})
 
-	mux.HandleFunc("/self-hosted-website", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("/{article}", func(w http.ResponseWriter, r *http.Request) {
+		article := r.PathValue("article")
 		lp := filepath.Join("templates", "article-layout.html")
-		fp := filepath.Join("templates", "self-hosted-website.html")
-		tmpl, _ := template.ParseFiles(lp, fp)
-		tmpl.ExecuteTemplate(w, "article-layout", nil)
-	})
-
-	mux.HandleFunc("/routing-with-go", func(w http.ResponseWriter, r *http.Request) {
-		lp := filepath.Join("templates", "article-layout.html")
-		fp := filepath.Join("templates", "routing-with-go.html")
+		fp := filepath.Join("templates", article+".html")
 		tmpl, _ := template.ParseFiles(lp, fp)
 		tmpl.ExecuteTemplate(w, "article-layout", nil)
 	})

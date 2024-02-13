@@ -17,28 +17,56 @@ body {
 
 body {
   display: flex;
-  justify-content: center;
-  padding: 1rem;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0 2rem;
 
   background-color: var(--color-background);
   color: var(--color-primary);
 }
-.body-wrapper {
-  max-width: 600px;
+
+
+/* PARENT CONTAINERS */
+
+header {
   display: flex;
   flex-direction: column;
+  max-width: 550px;
+  padding-top: 2rem;
 }
 
-h1,
+main {
+  max-width: 550px;
+}
+/* main > a {
+  display: block;
+  margin: 0;
+  padding: 1rem 0;
+  color: var(--color-primary);
+}
+main > a:hover {
+  color: unset;
+} */
+
+main > div {
+  padding: 1rem 0 0.5rem;
+}
+main > div:first-child {
+  padding-top: 2rem;
+}
+main > div > * {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+main > div > p:nth-child(3) {
+  font-family: "Poppins", sans-serif;
+}
+
 p,
 a {
   font-family: "JetBrains Mono", monospace;
   margin: 0.25rem 0;
-}
-
-h1 {
-  font-size: 1.2rem;
-  font-weight: 400;
 }
 
 p,
@@ -50,45 +78,46 @@ a {
   color: var(--color-secondary);
   text-decoration: none;
 }
+
 a:hover {
   color: var(--color-hover);
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  /* margin: 0 1rem; */
-  padding: 1rem 0;
-}
-.header > div:nth-child(2) {
-  display: flex;
-  flex-direction: column;
-}
-.header > div:nth-child(2) > a {
-  display: flex;
-  justify-content: right;
-}
 
-.articles {
-  display: flex;
-  flex-direction: column;
-}
-.articles > a {
-  display: block;
-  margin: 0;
-  padding: 1rem 0;
+/* HEADERS */
+
+h1,
+h2,
+h3,
+h1 > a,
+h2 > a,
+h3 > a  {
   color: var(--color-primary);
-}
-.articles > a > p:nth-child(3) {
-  font-family: "Poppins", sans-serif;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 400;
 
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  margin: 0.5rem 0;
 }
+
+h1, /* The title will be the only h1 not to have a header link */
+h1 > a,
+h2 > a {
+  font-size: 1.2rem;
+}
+
+h3 > a {
+  font-size: 1rem;
+}
+
+h1 > a:hover,
+h2 > a:hover,
+h3 > a:hover {
+  color: unset;
+}
+
 
 @media (max-aspect-ratio: 1/1) or (min-aspect-ratio: 3/4) {
-  body > div {
+  body > * {
     width: calc(100vw - 4rem);
   }
 }

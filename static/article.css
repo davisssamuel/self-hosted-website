@@ -15,78 +15,70 @@ body {
   margin: 0;
   padding: 0;
 }
-
 body {
   display: flex;
-  justify-content: center;
-  padding: 2rem;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0 2rem;
 
   background-color: var(--color-background);
   color: var(--color-primary);
 }
-body > div {
-  display: flex;
-  flex-direction: column;
-}
-.body-wrapper {
-  max-width: 600px;
-}
-.body-wrapper > a:first-child {
-  font-family: "JetBrains Mono", monospace;
-}
-.body-wrapper > h1:nth-child(3) {
-  margin: 0.25rem 0;
-}
-.body-wrapper > p:nth-child(2) {
-  font-family: "JetBrains Mono", monospace;
-  margin-top: 2rem;
-}
 
-h1,
-h2,
-h3 {
-  font-family: "JetBrains Mono", monospace;
-  font-weight: 400;
-
-  position: relative;
-  margin: 1rem 0 0.5rem;
-}
-
-/* h1:hover::before {
-  content: "#";
-  color: rgba(255, 255, 255, 0.25);
+/* body::before {
+  content: "";
   position: absolute;
-  left: -1rem;
-}
-h2:hover::before {
-  content: "##";
-  color: rgba(255, 255, 255, 0.25);
-  position: absolute;
-  left: -1.5rem;
-}
-h3:hover::before {
-  content: "###";
-  color: rgba(255, 255, 255, 0.25);
-  position: absolute;
-  left: -2rem;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4rem;
+  background-image: linear-gradient(var(--color-background) 25%, 75%, rgba(17,17,17,0));
+  position: fixed;
 } */
 
-p {
-  margin: 0.25rem 0;
+
+/* PARENT CONTAINERS */
+
+header {
+  max-width: 550px;
+  /* position: sticky; */
+  /* top: 0; */
+  padding: 2rem 0 1rem;
+  /* background-color: var(--color-background); */
+  /* background-image: linear-gradient(var(--color-background), transparent); */
+}
+header > a {
+  font-family: "JetBrains Mono", monospace;
+}
+header > p {
+  margin-top: 1rem;
+  font-family: "JetBrains Mono", monospace;
+}
+header > h1 {
+  margin-top: 0.5rem;
 }
 
-h1 {
-  font-size: 1.2rem;
+main {
+  max-width: 550px;
+}
+main > p:first-child {
+  font-family: "JetBrains Mono", monospace;
+}
+main > h1:nth-child(2) {
+  margin-top: 0.5rem;
 }
 
-h2, h3 {
-  font-size: 1rem;
-}
 
-p,
+/* PARAGRAPH AND LINKS */
+
+p, 
 a {
   font-family: "Poppins", sans-serif;
   font-size: 0.8rem;
+}
+
+p {
+  margin: 0.25rem 0 0;
 }
 
 a {
@@ -96,6 +88,55 @@ a {
 a:hover {
   color: var(--color-hover);
 }
+
+
+/* HEADERS */
+
+h1,
+h2,
+h3,
+h1 > a,
+h2 > a,
+h3 > a  {
+  color: var(--color-primary);
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 400;
+
+  margin: 1rem 0 0.5rem;
+}
+
+h1, /* The title will be the only h1 not to have a header link */
+h1 > a,
+h2 > a {
+  font-size: 1.2rem;
+}
+
+h3 > a {
+  font-size: 1rem;
+}
+
+h1 > a:hover,
+h2 > a:hover,
+h3 > a:hover {
+  color: unset;
+}
+
+/* h1 > a:hover::before {
+  content: "#";
+  color: rgba(255, 255, 255, 0.25);
+  position: absolute;
+  left: -0.95rem;
+}
+h2 > a:hover::before,
+h3 > a:hover::before {
+  content: "#";
+  color: rgba(255, 255, 255, 0.25);
+  position: absolute;
+  left: -0.8rem;
+} */
+
+
+/* CODE (INLINE AND BLOCK) */
 
 code {
   font-family: "Fira Mono", monospace;
@@ -138,8 +179,12 @@ pre > .command::before {
   content: "$ ";
 }
 
+
 @media (max-aspect-ratio: 1/1) or (min-aspect-ratio: 3/4) {
-  body > div {
+  header {
+    width: calc(100vw - 10rem); 
+  }
+  body > * {
     width: calc(100vw - 4rem);
   }
 }

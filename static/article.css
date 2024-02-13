@@ -19,7 +19,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 0 2rem;
+  padding: 0 2rem 2rem;
 
   background-color: var(--color-background);
   color: var(--color-primary);
@@ -37,10 +37,11 @@ body {
 } */
 
 
-/* PARENT CONTAINERS */
+/* HEADER AND MAIN */
 
 header {
   max-width: 550px;
+  width: 100%;
   /* position: sticky; */
   /* top: 0; */
   padding: 2rem 0 1rem;
@@ -60,6 +61,7 @@ header > h1 {
 
 main {
   max-width: 550px;
+  width: 100%;
 }
 main > p:first-child {
   font-family: "JetBrains Mono", monospace;
@@ -69,7 +71,7 @@ main > h1:nth-child(2) {
 }
 
 
-/* PARAGRAPH AND LINKS */
+/* PARAGRAPH AND ANCHORS */
 
 p, 
 a {
@@ -180,10 +182,7 @@ pre > .command::before {
 }
 
 
-@media (max-aspect-ratio: 1/1) or (min-aspect-ratio: 3/4) {
-  header {
-    width: calc(100vw - 10rem); 
-  }
+@media screen and (max-width: 550px) {
   body > * {
     width: calc(100vw - 4rem);
   }

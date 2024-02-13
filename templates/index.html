@@ -6,11 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Samuel Davis</title>
-    <script
-      src="https://unpkg.com/htmx.org@1.9.9"
-      integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX"
-      crossorigin="anonymous"
-    ></script>
     <link rel="stylesheet" href="/static/index.css" />
   </head>
 
@@ -18,26 +13,18 @@
 
     <header>
       <h1>@davisssamuel</h1>
-      <a href="https://github.com/davisssamuel">github</a>
-      <a href="https://www.linkedin.com/in/davisssamuel/">linkedin</a>
-      <!-- <a href="https://www.instagram.com/davisssamuel/">instagram</a> -->
-      <!-- <a href="https://vsco.co/davisssamuel">vsco</a> -->
+      <div>
+        <a href="https://github.com/davisssamuel">github</a>
+        <a href="https://www.linkedin.com/in/davisssamuel/">linkedin</a>
+        <a href="https://www.instagram.com/davisssamuel/">instagram</a>
+        <a href="https://vsco.co/davisssamuel">vsco</a>
+      </div>
     </header>
+    
     <main>
       {{template "articles"}} 
     </main>
 
-    <!-- <div class="header">
-      <h1>@davisssamuel</h1>
-      <div>
-        <a href="https://github.com/davisssamuel">github</a>
-        <a href="https://www.instagram.com/davisssamuel/">instagram</a>
-        <a href="https://vsco.co/davisssamuel">vsco</a>
-      </div>
-    </div>
-    <div class="articles">
-      {{template "articles"}}
-    </div> -->
   </body>
 </html>
 {{end}}

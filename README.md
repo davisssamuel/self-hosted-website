@@ -8,9 +8,9 @@ After the system reboots, login and update the system.
 sudo apt update && sudo apt upgrade
 ```
 
-# Setup `ssh` on the server
+# Setup ssh on the server
 
-Confirm the `ssh` service is running.
+Confirm the ssh service is running.
 
 ```
 sudo systemctl status ssh

@@ -56,7 +56,7 @@ ssh <user>@<server_ip>
 
 First, follow the instructions for [adding a site to Cloudflare](https://developers.cloudflare.com/fundamentals/setup/account-setup/add-site/). Then, [delete all DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#delete-dns-records) from the site in the Cloudfare dashboard. You will assign new DNS records that point traffic to the tunnel.
 
-Follow the instructions for [creating a locally managed tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-local-tunnel/) but stop after you have authenticated `cloudflared` via the browser popup (step 2). Be sure to follow the commands for **Linux** when downloading and installing cloudflared. Then create a tunnel and give it a name.
+Follow the instructions for [creating a locally managed tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-local-tunnel/) but stop after you have authenticated cloudflared via the browser popup (step 2). Be sure to follow the commands for **Linux** when downloading and installing cloudflared. Then create a tunnel and give it a name.
 
 ```
 cloudflared tunnel create <tunnel_name>

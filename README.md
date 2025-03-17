@@ -8,7 +8,7 @@ After the system reboots, login and update the system.
 sudo apt update && sudo apt upgrade
 ```
 
-# Setup ssh on the server
+## Setup ssh on the server
 
 Confirm the ssh service is running.
 
@@ -152,7 +152,7 @@ Attempt to connect to the server using ssh.
 ssh ssh.example.com
 ```
 
-## ERROR: Connection closed by UNKNOWN port 65535 [:link:]()
+## ERROR: Connection closed by UNKNOWN port 65535
 
 If the the `config.yml` file in `~/.cloudflared/` is not identical to the one in `/etc/cloudflared/`, [attempting to ssh will throw an error](https://community.cloudflare.com/t/unable-to-ssh-using-cloudflared/357068)
 

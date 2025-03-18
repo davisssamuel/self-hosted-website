@@ -1,4 +1,4 @@
-# Install the Ubuntu Server
+# Installing the server
 
 Download [Ubuntu Server](https://ubuntu.com/download/server) and flash the iso file to a USB drive using [Balena Etcher](https://etcher.balena.io/). With the USB drive in the machine, restart, go into the BIOS, and change the boot order to use the USB drive first. Using the installation TUI, choose the default options and install the Ubuntu Server onto the system. Be sure to choose to install OpenSSH when prompted.
 
@@ -8,7 +8,7 @@ After the system reboots, login and update the system.
 sudo apt update && sudo apt upgrade
 ```
 
-## Setup ssh on the server
+## Setting up ssh on the server
 
 Confirm the ssh service is running.
 
@@ -22,7 +22,7 @@ If the service is not running, start it.
 sudo systemctl enable --now ssh
 ```
 
-## Setup the server firewall
+## Setting up the server firewall
 
 Enable the firewall.
 
@@ -46,7 +46,7 @@ Confirm the firewall rules were added.
 sudo ufw status
 ```
 
-# Setup the Cloudflare Tunnel
+# Setting up the Cloudflare tunnel
 
 Once ssh is setup on the server, you can connect to server from another local client to complete the tunnel setup.
 
@@ -113,7 +113,7 @@ Run the tunnel.
 cloudflared tunnel run <tunnel_uuid or tunnel_name>
 ```
 
-## Run cloudflared as a service
+## Running cloudflared as a service
 
 In order to ensure the server always connects to the Cloudflare tunnel even on system reboot, a systemd service for cloudflared needs to be installed.
 
@@ -135,7 +135,7 @@ Confirm the service is running.
 sudo systemctl status cloudflared
 ```
 
-# Connect to the server remotely
+# Connecting to the server remotely
 
 In order to ssh into the server from a remote machine, the remote machine must have [cloudflared installed](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-local-tunnel/#1-download-and-install-cloudflared). Once cloudflared has been installed, add the following lines to the remote's `~/.ssh/config` file.
 

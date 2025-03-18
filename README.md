@@ -173,3 +173,43 @@ Restart the cloudflared service.
 ```
 sudo systemctl restart cloudflared
 ```
+
+# Creating a systemd service for the website
+
+This repo contains a simple website that uses node.js to serve the barebones HTML page. You can use whatever backend you'd like; when I created this project, I initially used Go and the html/template package. But, to serve your website you need some sort of runtime in the background serving your HTML pages and ideally restarting when the server reboots. The best way to go about this is to create a systemd service.
+
+Create the website service in `/etc/systemd/system/`.
+
+```
+# /etc/systemd/system/website.service
+
+[Unit]
+Description=website
+Requires=network.target
+After=multi-user.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/<user>/path/to/repo
+ExecStart=node /home/<user>/path/to/app.js
+User=root
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
+```
+
+You may need a website socket service in order for the above service to work. If so, create the socket service in the same location.
+
+```
+# /etc/systemd/system/website.socket
+
+[Socket]
+ListenStream=localhost:3000
+
+[Install]
+WantedBy=sockets.target
+```
+
+Systemd services can be finicky sometimes, so you may need to tweak the files above to suit your needs.
